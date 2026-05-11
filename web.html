@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>City Convent School</title>
+  <!-- Internal CSS for styling -->
+  <style>
+    /* Basic Reset and Font */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f5f8fa; color: #222; }
+
+    /* Header styles */
+    header {
+      background: #1565c0;
+      color: #fff;
+      padding: 20px 0;
+    }
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .school-name {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 15px;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 5px;
+    }
+    nav ul li a:hover {
+      background: #fff;
+      color: #1565c0;
+    }
+
+    /* Banner (Home) Section */
+    #home {
+      background: linear-gradient(to right, #1976d2cc, #42a5f5cc), url('https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1050&q=80') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 60px 10px 80px 10px;
+      position: relative;
+    }
+    #home h1 {
+      font-size: 2.5rem;
+      margin-bottom: 14px;
+      text-shadow: 1px 1px 6px #19426955;
+    }
+    #home p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+    #interactive-btn {
+      background: #fff;
+      color: #1565c0;
+      padding: 12px 28px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    #interactive-btn:hover {
+      background: #bbdefb;
+    }
+    #welcome-message {
+      margin-top: 18px;
+      color: #ffee58;
+      font-size: 1.1rem;
+      min-height: 20px;
+    }
+
+    section {
+      padding: 50px 0 40px 0;
+    }
+
+    /* About Section */
+    #about {
+      background: #fff;
+      border-bottom: 1px solid #e3e3e3;
+      text-align: center;
+    }
+    #about h2 {
+      color: #1565c0;
+      margin-bottom: 16px;
+    }
+    #about p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.06rem;
+      line-height: 1.6;
+    }
+
+    /* Courses Section */
+    #courses {
+      background: #e3f2fd;
+      text-align: center;
+    }
+    #courses h2 {
+      color: #1565c0;
+      margin-bottom: 16px;
+    }
+    .course-list {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+    .course-card {
+      background: #fff;
+      padding: 20px 18px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #1976d21a;
+      width: 260px;
+      transition: box-shadow 0.2s;
+    }
+    .course-card:hover {
+      box-shadow: 0 6px 20px #1976d239;
+      transform: translateY(-2px) scale(1.035);
+    }
+    .course-card h3 {
+      color: #1976d2;
+      margin-bottom: 10px;
+    }
+    .course-card p {
+      font-size: 0.98rem;
+      color: #444;
+    }
+
+    /* Contact Section */
+    #contact {
+      background: #fff;
+      text-align: center;
+    }
+    #contact h2 {
+      color: #1565c0;
+      margin-bottom: 14px;
+    }
+    form {
+      background: #e3f2fd;
+      margin: 0 auto;
+      padding: 28px 22px;
+      max-width: 390px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #1976d21b;
+    }
+    .form-group {
+      text-align: left;
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      font-weight: 500;
+      color: #124187;
+      margin-bottom: 5px;
+      display: inline-block;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #b3c6e5;
+      border-radius: 5px;
+      font-size: 1rem;
+      resize: none;
+      margin-top: 5px;
+    }
+    .form-group textarea {
+      min-height: 55px;
+    }
+    #contact-btn {
+      background: #1565c0;
+      color: #fff;
+      padding: 10px 23px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background 0.2s;
+      margin-top: 10px;
+    }
+    #contact-btn:hover {
+      background: #1976d2;
+    }
+    .error-msg {
+      color: #e53935;
+      font-size: 0.98rem;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 800px) {
+      .course-list {
+        flex-direction: column;
+        align-items: center;
+      }
+      .course-card { width: 95%; }
+    }
+    @media (max-width: 600px) {
+      .navbar { flex-direction: column; gap: 14px; }
+      nav ul { flex-direction: column; align-items: center; gap: 12px;}
+      .school-name { font-size: 1.25rem; }
+      #home h1 { font-size: 1.4rem; }
+      section { padding: 34px 0 28px 0; }
+      header, #home { padding-left: 0; padding-right: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header section with navigation -->
+  <header>
+    <div class="container navbar">
+      <div class="school-name">  City Convent School</div>
+      <nav>
+        <ul>
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#courses" class="nav-link">Courses</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="container">
+      <h1>Welcome to City Convent School</h1>
+      <p>Empowering students for a brighter future. Discover our supportive community and diverse learning opportunities!</p>
+      <!-- Interactive Button -->
+      <button id="interactive-btn">Click Me!</button>
+      <div id="welcome-message"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>
+        City Convent School is dedicated to nurturing each student's unique talents and academic abilities. Our experienced teachers and supportive environment foster creativity, excellence, and character. We encourage both academic success and holistic development through innovative teaching and vibrant extracurricular activities.
+      </p>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section id="courses">
+    <div class="container">
+      <h2>Our Courses</h2>
+      <div class="course-list">
+        <div class="course-card">
+          <h3>Science Explorer</h3>
+          <p>Hands-on activities and experiments to spark curiosity and love for science.</p>
+        </div>
+        <div class="course-card">
+          <h3>Creative Arts</h3>
+          <p>Develop self-expression through painting, music, and drama workshops led by experienced instructors.</p>
+        </div>
+        <div class="course-card">
+          <h3>Technology Basics</h3>
+          <p>Introduction to coding, robotics, and computer skills for the digital age.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form id="contact-form" autocomplete="off" novalidate>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <div id="form-error" class="error-msg"></div>
+        <button type="submit" id="contact-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Internal JavaScript for interactivity and validation -->
+  <script>
+    // Smooth scroll for navigation links and mobile usability
+    document.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        // Only smooth scroll if anchor is on this page
+        if(this.hash && document.querySelector(this.hash)) {
+          e.preventDefault();
+          document.querySelector(this.hash).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Interactive "Click Me!" Button
+    document.getElementById('interactive-btn').addEventListener('click', function() {
+      // Show a welcome message below the button
+      var msg = document.getElementById('welcome-message');
+      msg.textContent = "Welcome to our school!";
+      // Briefly highlight the message for fun
+      msg.style.transition = 'background 0.3s';
+      msg.style.background = '#1565c0';
+      setTimeout(() => { msg.style.background = 'transparent'; }, 900);
+    });
+
+    // Contact Form Validation and Submission
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault(); // prevent the form from submitting directly
+      // Get form values
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var message = document.getElementById('message').value.trim();
+      var errorDiv = document.getElementById('form-error');
+      errorDiv.style.display = "none";
+      errorDiv.textContent = '';
+
+      // Basic Validation
+      if (name === '' || email === '' || message === '') {
+        errorDiv.textContent = "Please fill in all fields.";
+        errorDiv.style.display = "block";
+        return;
+      }
+      // Email validation (simple regex for beginners)
+      var emailPattern = /^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$/;
+      if (!emailPattern.test(email)) {
+        errorDiv.textContent = "Please enter a valid email address.";
+        errorDiv.style.display = "block";
+        return;
+      }
+
+      // All fields valid!
+      alert("Thank you, " + name + "! Your message has been sent.");
+      // Reset the form
+      this.reset();
+    });
+  </script>
+</body>
+</html>
